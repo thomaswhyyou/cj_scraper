@@ -1,0 +1,34 @@
+<h1>Comission Junction: Active</h1>
+<p>Total active merchants: <%= @active_merchants.count %></p>
+
+<table border='1'>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>CJ ID</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Description</th>
+      <th>Protected KWs</th>
+      <th>TM Bidding Policy</th>
+      <th>Page URL</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% unless @active_merchants.empty? %>
+      <% @active_merchants.each do |merchant| %>
+      <tr>
+        <th><%= merchant.count %></th>
+        <th><%= merchant.cj_id %></th>
+        <th><%= merchant.primary_name %></th>
+        <th><%= merchant.status %></th>
+        <th><%= truncate(merchant.desc) %></th>
+        <th><%= truncate(merchant.protected_kws) %></th>
+        <th><%= merchant.bidding_policy %></th>
+        <th><a href="<%= merchant.page_url %>" target="_blank">View details</a></th>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
